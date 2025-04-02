@@ -11,16 +11,16 @@ let products = [
     {id: 3, name:"Mouse", price: 100}
 ]
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
     res.send("API is working! Try /api/products or /api/products/:id");
 });
 
 // Rutas de productos
-app.get("/api/products", (req, res) => {
+app.get("/products", (req, res) => {
     res.json(products);
 });
 
-app.get("/api/products/:id", (req, res) => {
+app.get("/products/:id", (req, res) => {
     const product = products.find(p => p.id === parseInt(req.params.id));
     if (product) {
         res.status(200).json(product);
@@ -29,7 +29,7 @@ app.get("/api/products/:id", (req, res) => {
     }
 });
 
-app.post("/api/products", (req, res) => {
+app.post("/products", (req, res) => {
     const { id, name, price } = req.body;
     if (products.some(p => p.id === id)) {
         return res.status(400).json({ error: "ID already in use" });
