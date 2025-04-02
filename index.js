@@ -15,7 +15,10 @@ app.get("/", (req, res) => {
     res.send("API is working! Try /api/products or /api/products/:id");
 });
 
-// Rutas de productos
+app.get("/products", (req,res) => {
+    res.json(products);
+})
+
 app.get("/products/:id", (req, res) => {
     try {
         const product = products.find(p => p.id === parseInt(req.params.id)); 
