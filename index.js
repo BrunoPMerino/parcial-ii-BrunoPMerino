@@ -11,6 +11,10 @@ let products = [
     {id: 3, name:"Mouse", price: 100}
 ]
 
+app.get('/', (req, res) => {
+    res.send('API is working! Try /products or /products/:id');
+});
+
 app.get("/products", (req,res) => {
     res.json(products);
 })
